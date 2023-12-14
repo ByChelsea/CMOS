@@ -1,0 +1,32 @@
+name: CMOS_Cityscapes_BSR
+suffix: ~
+scale: 4
+gpu_ids: [0]
+kernel_size: 61
+n_classes: 19
+val_blur: true
+val_seg: false
+val_sr: false
+
+
+datasets:
+  test_1:
+    name: Cityscapes-BSR-Group1
+    dataroot_GT: ../datasets/Cityscapes-BSR/test/GT
+    dataroot_LR: ../datasets/Cityscapes-BSR/test/Group1/LRx4
+    dataroot_blur: ../datasets/Cityscapes-BSR/test/Group1/blur
+    dataroot_seg: ~
+
+
+network_G:
+  which_model_G: CMOS
+  in_nc: 3
+  out_nc: ~
+  nf: ~
+  nb: ~
+  gc: ~
+
+
+path:
+  strict_load: true
+  pretrain_model_K: ./pretrained_models/Cityscapes_BSR/CMOS_Cityscapes_BSR.pth

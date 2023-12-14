@@ -1,0 +1,32 @@
+name: BlindSR_Cityscapes_BSR
+suffix: ~
+scale: 4
+gpu_ids: [0]
+kernel_size: 61
+code_length: 64
+n_classes: 19
+val_blur: false
+val_seg: false
+val_sr: true
+
+
+datasets:
+  test_1:
+    name: Cityscapes-BSR-Group1
+    dataroot_GT: ../datasets/Cityscapes-BSR/test/GT
+    dataroot_LR: ../datasets/Cityscapes-BSR/test/Group1/LRx4
+    dataroot_blur: ../datasets/Cityscapes-BSR/test/Group1/blur
+    dataroot_seg: ~
+
+network_G:
+  which_model_G: RRDB_SFT
+  in_nc: 3
+  out_nc: 3
+  nf: 64
+  nb: 10
+  gc: 32
+
+
+path:
+  strict_load: true
+  pretrain_model_G: ./pretrained_models/Cityscapes_BSR/BlindSR_Cityscapes_BSR.pth

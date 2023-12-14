@@ -1,0 +1,80 @@
+#### general settings
+name: BlindSR_NYUv2_BSR
+use_tb_logger: true
+scale: 4
+gpu_ids: [0]
+kernel_size: 21
+code_length: 64
+n_classes: 40
+val_blur: false
+val_seg: false
+val_sr: true
+
+#### datasets
+datasets:
+  train:
+    name: NYUv2-BSR
+    dataroot_GT: ../datasets/NYUv2-BSR/train/GT
+    dataroot_LR: ../datasets/NYUv2-BSR/train/LRx4
+    dataroot_blur: ../datasets/NYUv2-BSR/train/blur
+    dataroot_seg: ../datasets/NYUv2-BSR/train/semseg
+
+    use_shuffle: true
+    n_workers: 8
+    batch_size: 4
+    GT_size: [480, 640]
+    LR_size: [120, 160]
+    use_flip: true
+    use_rot: false
+    use_scale: true
+  val:
+    name: NYUv2-BSR-Group1
+    dataroot_GT: ../datasets/NYUv2-BSR/val/GT
+    dataroot_LR: ../datasets/NYUv2-BSR/val/Group1/LRx4
+    dataroot_blur: ../datasets/NYUv2-BSR/val/Group1/blur
+    dataroot_seg: ../datasets/NYUv2-BSR/val/semseg
+
+
+#### network structures
+network_G:
+  which_model_G: BlindSR
+  in_nc: 3
+  out_nc: 3
+  nf: 64
+  nb: 10
+  gc: 32
+
+
+#### path
+path:
+  pretrain_model_K: ./pretrained_models/NYUv2_BSR/CMOS_NYUv2_BSR.pth
+  pretrain_model_G: ./pretrained_models/NYUv2_BSR/RRDB_SFT_NYUv2_BSR.pth
+  strict_load: false
+  resume_state: ~ 
+
+
+#### training settings: learning rate scheme, loss
+train:
+  lr_G: !!float 5e-5
+  lr_scheme: MultiStepLR
+  beta1: 0.9
+  beta2: 0.999
+  niter: 40000
+  warmup_iter: -1
+  lr_steps: ~
+  lr_gamma: 0.5
+  restarts: ~
+  restart_weights: ~
+  eta_min: !!float 1e-7
+
+  pixel_criterion: l1
+  pixel_weight: 1.0
+
+  manual_seed: 0
+  val_freq: !!float 1e3
+
+
+#### logger
+logger:
+  print_freq: 200
+  save_checkpoint_freq: !!float 1e3

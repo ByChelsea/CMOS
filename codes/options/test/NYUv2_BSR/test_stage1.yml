@@ -1,0 +1,32 @@
+name: CMOS_NYUv2_BSR
+suffix: ~
+scale: 4
+gpu_ids: [0]
+kernel_size: 21
+n_classes: 40
+val_blur: true
+val_seg: true
+val_sr: false
+
+
+datasets:
+  test_1:
+    name: NYUv2-BSR-Group1
+    dataroot_GT: ../datasets/NYUv2-BSR/val/GT
+    dataroot_LR: ../datasets/NYUv2-BSR/val/Group1/LRx4
+    dataroot_blur: ../datasets/NYUv2-BSR/val/Group1/blur
+    dataroot_seg: ../datasets/NYUv2-BSR/val/semseg
+
+
+network_G:
+  which_model_G: CMOS
+  in_nc: 3
+  out_nc: ~
+  nf: ~
+  nb: ~
+  gc: ~
+
+
+path:
+  strict_load: true
+  pretrain_model_K: ./pretrained_models/NYUv2_BSR/CMOS_NYUv2_BSR.pth

@@ -1,0 +1,74 @@
+#### general settings
+name: RRDB_SFT_Cityscapes_BSR
+use_tb_logger: true
+scale: 4
+gpu_ids: [0]
+kernel_size: 61
+code_length: 64
+n_classes: 19
+val_blur: false
+val_seg: false
+val_sr: true
+
+#### datasets
+datasets:
+  train:
+    name: Cityscapes-BSR
+    dataroot_GT: ../datasets/Cityscapes-BSR/train/GT
+    dataroot_LR: ../datasets/Cityscapes-BSR/train/LRx4
+    dataroot_blur: ../datasets/Cityscapes-BSR/train/blur
+    dataroot_seg: ../datasets/Cityscapes-BSR/train/semseg
+
+    use_shuffle: true
+    n_workers: 8
+    batch_size: 16
+    GT_size: [192, 192]
+    LR_size: [48, 48]
+    use_flip: true
+    use_rot: true
+    use_scale: false
+  val:
+    name: Cityscapes-BSR-val
+    dataroot_GT: ../datasets/Cityscapes-BSR/val/GT
+    dataroot_LR: ../datasets/Cityscapes-BSR/val/LRx4
+    dataroot_blur: ../datasets/Cityscapes-BSR/val/blur
+    dataroot_seg: ../datasets/Cityscapes-BSR/val/semseg
+
+#### network structures
+network_G:
+  which_model_G: RRDB_SFT
+  in_nc: 3
+  out_nc: 3
+  nf: 64
+  nb: 10
+  gc: 32
+
+#### path
+path:
+  pretrain_model_G: ~
+  strict_load: true
+  resume_state: ~
+
+#### training settings: learning rate scheme, loss
+train:
+  lr_G: !!float 2e-4
+  lr_scheme: CosineAnnealingLR_Restart
+  beta1: 0.9
+  beta2: 0.99
+  niter: 120000
+  warmup_iter: -1
+  T_period: ~
+  restarts: ~
+  restart_weights: ~
+  eta_min: !!float 1e-7
+
+  pixel_criterion: l1
+  pixel_weight: 1.0
+
+  manual_seed: 0
+  val_freq: !!float 5e3
+
+#### logger
+logger:
+  print_freq: 200
+  save_checkpoint_freq: !!float 5e3

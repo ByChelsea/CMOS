@@ -2,7 +2,8 @@
 # Better “CMOS” Produces Clearer Images: Learning Space-Variant Blur Estimation for Blind Image Super-Resolution (CMOS, CVPR 2023)
 
 This repository is the official PyTorch implementation of Better “CMOS” Produces Clearer Images: Learning Space-Variant Blur Estimation for Blind Image Super-Resolution
-([arxiv](https://arxiv.org/abs/2304.03542)). Please feel free to contact us if you have any questions.
+([arxiv](https://arxiv.org/abs/2304.03542)). 
+Please feel free to contact us if you have any questions.
 
 
 ## Requirements
@@ -15,7 +16,7 @@ Note: this repository is based on [BasicSR](https://github.com/xinntao/BasicSR#m
 
 
 ## Data Preparation
-To prepare data, download datasets [NYUv2-BSR](https://drive.google.com/file/d/1W9zy45nvje8zQ7QaU0DK1c_9hPeGqB8R/view?usp=drive_link) and [Cityscapes-BSR](https://drive.google.com/file/d/1RLcLZbdq7qhqDgl4elywKSZX3Sq7Nwd3/view?usp=drive_link) from Google Drive and place them in the './datasets' folder.
+To prepare data, download datasets [NYUv2-BSR](https://drive.google.com/file/d/1W9zy45nvje8zQ7QaU0DK1c_9hPeGqB8R/view?usp=drive_link) and [Cityscapes-BSR](https://drive.google.com/file/d/1RLcLZbdq7qhqDgl4elywKSZX3Sq7Nwd3/view?usp=drive_link) from Google Drive and place them in the './datasets' folder. The creation of these two datasets is based on [this repository](https://github.com/codeslake/SYNDOF). Please refer to our paper for more detais.
 
 
 ## Training

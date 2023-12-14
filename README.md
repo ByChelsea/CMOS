@@ -1,8 +1,8 @@
 
-# Better “CMOS” Produces Clearer Images: Learning Space-Variant Blur Estimation for Blind Image Super-Resolution (CMOS, CVPR2023)
+# Better “CMOS” Produces Clearer Images: Learning Space-Variant Blur Estimation for Blind Image Super-Resolution (CMOS, CVPR 2023)
 
 This repository is the official PyTorch implementation of Better “CMOS” Produces Clearer Images: Learning Space-Variant Blur Estimation for Blind Image Super-Resolution
-([arxiv](https://arxiv.org/abs/2304.03542)).
+([arxiv](https://arxiv.org/abs/2304.03542)). Please feel free to contact us if you have any questions.
 
 
 ## Requirements
@@ -55,7 +55,7 @@ python test.py --opt options/test/NYUv2_BSR/test_stage2.yml
 To test CMOS+RRDB-SFT (stage3, blind SR), run this command:
 
 ```
-python test.py --opt options/test/test_stage3.yml
+python test.py --opt options/test/NYUv2_BSR/test_stage3.yml
 ```
 
 ## Citation
@@ -69,7 +69,7 @@ python test.py --opt options/test/test_stage3.yml
 
 ## Acknowledgement
 
-The codes are based on [BasicSR](https://github.com/xinntao/BasicSR), [MANet](https://github.com/JingyunLiang/MANet) and [IKC](https://github.com/yuanjunchai/IKC). Thanks for their great works.
+The codes are based on [BasicSR](https://github.com/xinntao/BasicSR), [MANet](https://github.com/JingyunLiang/MANet) and [MTI-Net](https://github.com/SimonVandenhende/Multi-Task-Learning-PyTorch). Thanks for their great works.
 
 
 

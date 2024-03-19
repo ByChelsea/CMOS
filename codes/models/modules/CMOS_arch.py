@@ -132,7 +132,7 @@ def window_partition(x, window_size):
 def window_reverse(windows, window_size, H, W):
     B = int(windows.shape[0] / (H * W / window_size[0] / window_size[1]))
     x = windows.permute(0, 2, 3, 1).contiguous()
-    x = windows.view(B, H // window_size[0], W // window_size[1], window_size[0], window_size[1], -1)
+    x = x.view(B, H // window_size[0], W // window_size[1], window_size[0], window_size[1], -1)
     x = x.permute(0, 1, 3, 2, 4, 5).contiguous().view(B, H, W, -1).permute(0, 3, 1, 2).contiguous()
     return x
 
@@ -438,6 +438,7 @@ class BlindSR(nn.Module):
 
     def forward(self, x, gt_B, gt_S):
         # cmos
+        self.cmos.eval()
         with torch.no_grad():
             blur_est, seg_est, _ = self.cmos(self.normalize(x))
             _, seg = torch.max(seg_est, dim=1, keepdim=True)

@@ -16,7 +16,7 @@ Note: this repository is based on [BasicSR](https://github.com/xinntao/BasicSR#m
 
 
 ## Data Preparation
-To prepare data, download datasets [NYUv2-BSR](https://drive.google.com/file/d/1W9zy45nvje8zQ7QaU0DK1c_9hPeGqB8R/view?usp=drive_link) and [Cityscapes-BSR](https://drive.google.com/file/d/1RLcLZbdq7qhqDgl4elywKSZX3Sq7Nwd3/view?usp=drive_link) from Google Drive and place them in the './datasets' folder. The creation of these two datasets is based on [this repository](https://github.com/codeslake/SYNDOF). Please refer to our paper for more detais.
+To prepare data, download datasets [NYUv2-BSR](https://huggingface.co/datasets/ByChelsea123/NYUv2-BSR) and [Cityscapes-BSR](https://huggingface.co/datasets/ByChelsea123/Cityscapes-BSR) from Google Drive and place them in the './datasets' folder. The creation of these two datasets is based on [this repository](https://github.com/codeslake/SYNDOF). Please refer to our paper for more detais.
 
 
 ## Training
